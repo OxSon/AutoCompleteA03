@@ -17,38 +17,40 @@ In this assignment, you will implement autocomplete by sorting the queries in le
 ### Part 1: autocomplete term
 Write an immutable data type Term.java that represents an autocomplete term: a string query and an associated real-valued weight. You must implement the following API, which supports comparing terms by three different orders: [http://docs.oracle.com/javase/7/docs/api/java/lang/String.html#compareTo(java.lang.String)](lexicographic order) by query string (the natural order); in descending order by weight (an alternate order); and lexicographic order by query string but using only the first r characters (a family of alternate orderings). The last order may seem a bit odd, but you will use it in Part 3 to find all terms that start with a given prefix (of length r).
 
-    public class Term implements Comparable<Term> {
+```java
+public class Term implements Comparable<Term> {
 
-        // Initialize a term with the given query string and weight.
-        public Term(String query, double weight)
+    // Initialize a term with the given query string and weight.
+    public Term(String query, double weight)
 
-        // Compare the terms in descending order by weight.
-        public static Comparator<Term> byReverseWeightOrder()
+    // Compare the terms in descending order by weight.
+    public static Comparator<Term> byReverseWeightOrder()
 
-        // Compare the terms in lexicographic order but using only the first r characters of each query.
-        public static Comparator<Term> byPrefixOrder(int r)
+    // Compare the terms in lexicographic order but using only the first r characters of each query.
+    public static Comparator<Term> byPrefixOrder(int r)
 
-        // Compare the terms in lexicographic order by query.
-        public int compareTo(Term that)
+    // Compare the terms in lexicographic order by query.
+    public int compareTo(Term that)
 
-        // Return a string representation of the term in the following format:
-        // the weight, followed by a tab, followed by the query.
-        public String toString()
-    }
+    // Return a string representation of the term in the following format:
+    // the weight, followed by a tab, followed by the query.
+    public String toString()
+}```
 
 The constructor should throw a java.lang.NullPointerException if query is null and a java.lang.IllegalArgumentException unless weight is nonnegative. The byPrefixOrder() method should throw a java.lang.IllegalArgumentException if r is negative.
 
 ### Part 2: binary search
 When binary searching a sorted array that contains more than one key equal to the search key, the client may want to know the index of either the first or the last such key. Accordingly, implement the following API:
 
-    public class BinarySearchDeluxe {
+```java
+public class BinarySearchDeluxe {
 
-        // Return the index of the first key in a[] that equals the search key, or -1 if no such key.
-        public static <Key> int firstIndexOf(Key[] a, Key key, Comparator<Key> comparator)
+    // Return the index of the first key in a[] that equals the search key, or -1 if no such key.
+    public static <Key> int firstIndexOf(Key[] a, Key key, Comparator<Key> comparator)
 
-        // Return the index of the last key in a[] that equals the search key, or -1 if no such key.
-        public static <Key> int lastIndexOf(Key[] a, Key key, Comparator<Key> comparator)
-    }
+    // Return the index of the last key in a[] that equals the search key, or -1 if no such key.
+    public static <Key> int lastIndexOf(Key[] a, Key key, Comparator<Key> comparator)
+}```
 
 Corner cases.  Each static method should throw a java.lang.NullPointerException if any of its arguments is null. You should assume that the argument array is in sorted order (with respect to the supplied comparator).
 
@@ -57,17 +59,18 @@ Performance requirements.  The firstIndexOf() and lastIndexOf() methods should m
 ### Part 3: autocomplete
 In this part, you will implement an immutable data type that provides autocomplete functionality for a given set of string and weights, using Term and BinarySearchDeluxe. To do so, sort the terms in lexicographic order; use binary search to find the set of terms that start with a given prefix; and sort the matching terms in descending order by weight. Organize your program by creating an immutable data type Autocomplete with the following API:
 
-    public class Autocomplete {
+```java
+public class Autocomplete {
 
-        // Initialize the data structure from the given array of terms.
-        public Autocomplete(Term[] terms)
+    // Initialize the data structure from the given array of terms.
+    public Autocomplete(Term[] terms)
 
-        // Return all terms that start with the given prefix, in descending order of weight.
-        public Term[] allMatches(String prefix)
+    // Return all terms that start with the given prefix, in descending order of weight.
+    public Term[] allMatches(String prefix)
 
-        // Return the number of terms that start with the given prefix.
-        public int numberOfMatches(String prefix)
-    }
+    // Return the number of terms that start with the given prefix.
+    public int numberOfMatches(String prefix)
+}```
 
 Corner cases.  The constructor and each method should throw a java.lang.NullPointerException its argument is null.
 
