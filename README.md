@@ -76,9 +76,9 @@ Performance requirements.  The constructor should make proportional to N log N c
 ### Input format
 We provide a number of sample input files for testing. Each file consists of an integer N followed by N pairs of query strings and positive weights. There is one pair per line, with the weight and string separated by a tab. A query string can be an arbitrary sequence of Unicode characters, including spaces (but not newlines).
 
-    The file wiktionary.txt contains the 10,000 most common words in Project Gutenberg, with weights equal to their frequencies.
+The file wiktionary.txt contains the 10,000 most common words in Project Gutenberg, with weights equal to their frequencies.
 
-    The file cities.txt contains over 90,000 cities, with weights equal to their populations. 
+The file cities.txt contains over 90,000 cities, with weights equal to their populations. 
 
         % more wiktionary.txt     
         10000
@@ -179,7 +179,7 @@ Here are a few sample executions:
 ### Interactive GUI (optional, but fun and no extra work)
 Download and compile AutocompleteGUI.java. The program takes the name of a file and an integer k as command-line arguments and provides a GUI for the user to enter queries. It presents the top k matching terms in real time. When the user selects a term, the GUI opens up the results from a Google search for that term in a browser.
 
-    `% java AutocompleteGUI cities.txt 10`
+    % java AutocompleteGUI cities.txt 10
 
 
 ### Extra credit 1
@@ -203,7 +203,7 @@ Improve AutcompleteGUI.java in the following (or other) ways:
    - Fix some of the known bugs, which are documented in the file. 
 
 ### Deliverables
-Submit Autocomplete.java, BinarySearchDeluxe.java, and Term.java. Your may not call any library functions other than those in java.lang, java.util, stdlib.jar, and algs4.jar. Finally, submit a readme.txt file and answer the questions.
+Submit `Autocomplete.java`, BinarySearchDeluxe.java, and Term.java. Your may not call any library functions other than those in java.lang, java.util, stdlib.jar, and algs4.jar. Finally, submit a readme.txt file and answer the questions.
 
 This assignment was developed by Matthew Drabick and Kevin Wayne.
 Copyright © 2014.
