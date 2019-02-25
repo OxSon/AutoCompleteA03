@@ -247,3 +247,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/vim,java,maven,linux,eclipse,windows,intellij
+!/input_files/

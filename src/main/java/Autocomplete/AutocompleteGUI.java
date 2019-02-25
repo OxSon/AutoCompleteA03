@@ -36,48 +36,21 @@
  *
  ******************************************************************************/
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+package Autocomplete;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URLEncoder;
+import edu.princeton.cs.algs4.In;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.Desktop;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.SwingUtilities;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JComponent;
-import javax.swing.JTextField;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.GroupLayout;
-import javax.swing.BorderFactory;
-import javax.swing.LayoutStyle;
-import javax.swing.KeyStroke;
-import javax.swing.ListSelectionModel;
-import javax.swing.Action;
-import javax.swing.AbstractAction;
+import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.MouseInputAdapter;
-
-import edu.princeton.cs.algs4.In;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLEncoder;
 
 public class AutocompleteGUI extends JFrame {
     // for serializable classes
@@ -178,7 +151,7 @@ public class AutocompleteGUI extends JFrame {
         private static final long serialVersionUID = 1L;
         
         private final JTextField searchText;      // the search bar
-        private Autocomplete auto;                // the Autocomplete object 
+        private Autocomplete auto;                // the Autocomplete object
         private String[] results = new String[k]; // an array of matches
         //// private JList<String> suggestions;   // a list of autocomplete matches (Java 7)
         private JList suggestions;                // a list of autocomplete matches (Java 6)
