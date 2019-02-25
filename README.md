@@ -17,7 +17,6 @@ In this assignment, you will implement autocomplete by sorting the queries in le
 ### Part 1: autocomplete term
 Write an immutable data type Term.java that represents an autocomplete term: a string query and an associated real-valued weight. You must implement the following API, which supports comparing terms by three different orders: lexicographic order by query string (the natural order); in descending order by weight (an alternate order); and lexicographic order by query string but using only the first r characters (a family of alternate orderings). The last order may seem a bit odd, but you will use it in Part 3 to find all terms that start with a given prefix (of length r).
 
-    ```java
     public class Term implements Comparable<Term> {
 
         // Initialize a term with the given query string and weight.
@@ -35,14 +34,13 @@ Write an immutable data type Term.java that represents an autocomplete term: a s
         // Return a string representation of the term in the following format:
         // the weight, followed by a tab, followed by the query.
         public String toString()
-    }```
+    }
 
 The constructor should throw a java.lang.NullPointerException if query is null and a java.lang.IllegalArgumentException unless weight is nonnegative. The byPrefixOrder() method should throw a java.lang.IllegalArgumentException if r is negative.
 
 ### Part 2: binary search
 When binary searching a sorted array that contains more than one key equal to the search key, the client may want to know the index of either the first or the last such key. Accordingly, implement the following API:
 
-    ```java
     public class BinarySearchDeluxe {
 
         // Return the index of the first key in a[] that equals the search key, or -1 if no such key.
@@ -50,7 +48,7 @@ When binary searching a sorted array that contains more than one key equal to th
 
         // Return the index of the last key in a[] that equals the search key, or -1 if no such key.
         public static <Key> int lastIndexOf(Key[] a, Key key, Comparator<Key> comparator)
-    }```
+    }
 
 Corner cases.  Each static method should throw a java.lang.NullPointerException if any of its arguments is null. You should assume that the argument array is in sorted order (with respect to the supplied comparator).
 
@@ -59,7 +57,6 @@ Performance requirements.  The firstIndexOf() and lastIndexOf() methods should m
 ### Part 3: autocomplete
 In this part, you will implement an immutable data type that provides autocomplete functionality for a given set of string and weights, using Term and BinarySearchDeluxe. To do so, sort the terms in lexicographic order; use binary search to find the set of terms that start with a given prefix; and sort the matching terms in descending order by weight. Organize your program by creating an immutable data type Autocomplete with the following API:
 
-    ```java
     public class Autocomplete {
 
         // Initialize the data structure from the given array of terms.
@@ -70,7 +67,7 @@ In this part, you will implement an immutable data type that provides autocomple
 
         // Return the number of terms that start with the given prefix.
         public int numberOfMatches(String prefix)
-    }```
+    }
 
 Corner cases.  The constructor and each method should throw a java.lang.NullPointerException its argument is null.
 
@@ -84,7 +81,6 @@ We provide a number of sample input files for testing. Each file consists of an 
     The file cities.txt contains over 90,000 cities, with weights equal to their populations. 
 
         % more wiktionary.txt     
-        ```
         10000
            56271872.00	the
            33950064.00	of
@@ -97,12 +93,10 @@ We provide a number of sample input files for testing. Each file consists of an 
             8799755.00	his
                         ...
                3923.23	calves
-        ```
 
     	
 
     % more cities.txt
-        ```
     93827
           14608512	Shanghai, China
           13076300	Buenos Aires, Argentina
@@ -115,11 +109,9 @@ We provide a number of sample input files for testing. Each file consists of an 
           10381222	Moscow, Russia
                     ...
                  2	Al Khāniq, Yemen
-        ```
 
 Below is a sample client that takes the name of an input file and an integer k as command-line arguments. It reads the data from the file; then it repeatedly reads autocomplete queries from standard input, and prints out the top k matching terms in descending order of weight.
 
-    ```java
     public static void main(String[] args) {
 
         // read in the terms from a file
@@ -143,11 +135,10 @@ Below is a sample client that takes the name of an input file and an integer k a
             for (int i = 0; i < Math.min(k, results.length); i++)
                 StdOut.println(results[i]);
         }
-    }```
+    }
 
 Here are a few sample executions:
 
-```
     % java Autocomplete wiktionary.txt 5
     auto
             6197.0  automobile
@@ -164,12 +155,10 @@ Here are a few sample executions:
          2820265.0  their
          2509917.0  them
          1961200.0  there
-```
 
     	         	
 
     % java Autocomplete cities.txt 7
-```
     M
         12691836.0  Mumbai, India
         12294193.0  Mexico City, Distrito Federal, Mexico
@@ -186,7 +175,6 @@ Here are a few sample executions:
           227150.0  Al Minyā, Egypt
           128297.0  Al Manāqil, Sudan
            99357.0  Al Maţarīyah, Egypt
-```
 
 ### Interactive GUI (optional, but fun and no extra work)
 Download and compile AutocompleteGUI.java. The program takes the name of a file and an integer k as command-line arguments and provides a GUI for the user to enter queries. It presents the top k matching terms in real time. When the user selects a term, the GUI opens up the results from a Google search for that term in a browser.
