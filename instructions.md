@@ -35,7 +35,8 @@ public class Term implements Comparable<Term> {
     // Return a string representation of the term in the following format:
     // the weight, followed by a tab, followed by the query.
     public String toString()
-}```
+}
+```
 
 The constructor should throw a java.lang.NullPointerException if query is null and a java.lang.IllegalArgumentException unless weight is nonnegative. The byPrefixOrder() method should throw a java.lang.IllegalArgumentException if r is negative.
 
@@ -50,7 +51,8 @@ public class BinarySearchDeluxe {
 
     // Return the index of the last key in a[] that equals the search key, or -1 if no such key.
     public static <Key> int lastIndexOf(Key[] a, Key key, Comparator<Key> comparator)
-}```
+}
+```
 
 Corner cases.  Each static method should throw a java.lang.NullPointerException if any of its arguments is null. You should assume that the argument array is in sorted order (with respect to the supplied comparator).
 
@@ -70,7 +72,8 @@ public class Autocomplete {
 
     // Return the number of terms that start with the given prefix.
     public int numberOfMatches(String prefix)
-}```
+}
+```
 
 Corner cases.  The constructor and each method should throw a java.lang.NullPointerException its argument is null.
 
