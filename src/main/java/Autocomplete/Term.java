@@ -3,9 +3,10 @@ package Autocomplete;
 import java.util.Comparator;
 
 /**
- * @author Alec Mills & Tony Arceo
- * <p>
  * Represents an autocomplete Term: a string query and an associated real-valued weight.
+ *
+ * @author Alec Mills
+ * @author Tony Arceo
  */
 public class Term implements Comparable<Term> {
     private final String query;
