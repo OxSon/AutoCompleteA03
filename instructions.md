@@ -3,7 +3,7 @@
 
 Write a program to implement autocomplete for a given set of N strings and positive weights. That is, given a prefix, find all strings in the set that start with the prefix, in descending order of weight.
 
-Autocomplete is an important feature of many modern applications. As the user types, the program predicts the complete query (typically a word or phrase) that the user intends to type. Autocomplete is most effective when there are a limited number of likely queries. For example, the [http://www.imdb.com](Internet Movie Database) uses it to display the names of movies as the user types; search engines use it to display suggestions as the user enters web search queries; cell phones use it to speed up text input.
+Autocomplete is an important feature of many modern applications. As the user types, the program predicts the complete query (typically a word or phrase) that the user intends to type. Autocomplete is most effective when there are a limited number of likely queries. For example, the [Internet Movie Database](http://www.imdb.com) uses it to display the names of movies as the user types; search engines use it to display suggestions as the user enters web search queries; cell phones use it to speed up text input.
 
 IMDB search    Google search    Phone keyboard suggestions
 
@@ -15,7 +15,7 @@ The performance of autocomplete functionality is critical in many systems. For e
 In this assignment, you will implement autocomplete by sorting the queries in lexicographic order; using binary search to find the set of queries that start with a given prefix; and sorting the matching queries in descending order by weight.
 
 ### Part 1: autocomplete term
-Write an immutable data type Term.java that represents an autocomplete term: a string query and an associated real-valued weight. You must implement the following API, which supports comparing terms by three different orders: [http://docs.oracle.com/javase/7/docs/api/java/lang/String.html#compareTo(java.lang.String)](lexicographic order) by query string (the natural order); in descending order by weight (an alternate order); and lexicographic order by query string but using only the first r characters (a family of alternate orderings). The last order may seem a bit odd, but you will use it in Part 3 to find all terms that start with a given prefix (of length r).
+Write an immutable data type `Term.java` that represents an autocomplete term: a string query and an associated real-valued weight. You must implement the following API, which supports comparing terms by three different orders: [lexicographic order](http://docs.oracle.com/javase/7/docs/api/java/lang/String.html#compareTo(java.lang.String)) by query string (the natural order); in descending order by weight (an alternate order); and lexicographic order by query string but using only the first r characters (a family of alternate orderings). The last order may seem a bit odd, but you will use it in Part 3 to find all terms that start with a given prefix (of length r).
 
 ```java
 public class Term implements Comparable<Term> {
@@ -38,7 +38,7 @@ public class Term implements Comparable<Term> {
 }
 ```
 
-The constructor should throw a java.lang.NullPointerException if query is null and a java.lang.IllegalArgumentException unless weight is nonnegative. The byPrefixOrder() method should throw a java.lang.IllegalArgumentException if r is negative.
+The constructor should throw a `java.lang.NullPointerException` if query is null and a `java.lang.IllegalArgumentException` unless weight is nonnegative. The `byPrefixOrder()` method should throw a `java.lang.IllegalArgumentException` if r is negative.
 
 ### Part 2: binary search
 When binary searching a sorted array that contains more than one key equal to the search key, the client may want to know the index of either the first or the last such key. Accordingly, implement the following API:
@@ -54,12 +54,12 @@ public class BinarySearchDeluxe {
 }
 ```
 
-Corner cases.  Each static method should throw a java.lang.NullPointerException if any of its arguments is null. You should assume that the argument array is in sorted order (with respect to the supplied comparator).
+Corner cases.  Each static method should throw a `java.lang.NullPointerException` if any of its arguments is null. You should assume that the argument array is in sorted order (with respect to the supplied comparator).
 
-Performance requirements.  The firstIndexOf() and lastIndexOf() methods should make at most 1 + ⌈log2 N⌉ compares in the worst case,
+Performance requirements.  The `firstIndexOf()` and `lastIndexOf()` methods should make at most `1 + ⌈log2 N⌉` compares in the worst case,
 
 ### Part 3: autocomplete
-In this part, you will implement an immutable data type that provides autocomplete functionality for a given set of string and weights, using Term and BinarySearchDeluxe. To do so, sort the terms in lexicographic order; use binary search to find the set of terms that start with a given prefix; and sort the matching terms in descending order by weight. Organize your program by creating an immutable data type Autocomplete with the following API:
+In this part, you will implement an immutable data type that provides autocomplete functionality for a given set of string and weights, using `Term` and `BinarySearchDeluxe`. To do so, sort the terms in lexicographic order; use binary search to find the set of terms that start with a given prefix; and sort the matching terms in descending order by weight. Organize your program by creating an immutable data type `Autocomplete` with the following API:
 
 ```java
 public class Autocomplete {
@@ -75,16 +75,16 @@ public class Autocomplete {
 }
 ```
 
-Corner cases.  The constructor and each method should throw a java.lang.NullPointerException its argument is null.
+Corner cases.  The constructor and each method should throw a `java.lang.NullPointerException` its argument is null.
 
-Performance requirements.  The constructor should make proportional to N log N compares (or better) in the worst case, where N is the number of terms. The allMatches() method should make proportional to log N + M log M compares (or better) in the worst case, where M is the number of matching terms. The numberOfMatches() method should make proportional to log N compares (or better) in the worst case. In this context, a compare is one call to any of the compare() or compareTo() methods defined in Term.
+Performance requirements.  The constructor should make proportional to `N log N` compares (or better) in the worst case, where `N` is the number of terms. The `allMatches()` method should make proportional to `log N + M log M` compares (or better) in the worst case, where `M` is the number of matching terms. The `numberOfMatches()` method should make proportional to `log N` compares (or better) in the worst case. In this context, a compare is one call to any of the `compare()` or `compareTo()` methods defined in Term.
 
 ### Input format
-We provide a number of sample input files for testing. Each file consists of an integer N followed by N pairs of query strings and positive weights. There is one pair per line, with the weight and string separated by a tab. A query string can be an arbitrary sequence of Unicode characters, including spaces (but not newlines).
+We provide a number of sample input files for testing. Each file consists of an integer `N` followed by `N` pairs of query strings and positive weights. There is one pair per line, with the weight and string separated by a tab. A query string can be an arbitrary sequence of Unicode characters, including spaces (but not newlines).
 
-The file [./input_files/wiktionary.txt](wiktionary.txt) contains the 10,000 most common words in Project Gutenberg, with weights equal to their frequencies.
+The file [wiktionary.txt](./input_files/wiktionary.txt) contains the 10,000 most common words in Project Gutenberg, with weights equal to their frequencies.
 
-The file [./input_files/cities.txt](cities.txt) contains over 90,000 cities, with weights equal to their populations. 
+The file [cities.txt](./input_files/cities.txt) contains over 90,000 cities, with weights equal to their populations. 
 
         % more wiktionary.txt     
         10000
@@ -116,32 +116,34 @@ The file [./input_files/cities.txt](cities.txt) contains over 90,000 cities, wit
                     ...
                  2	Al Khāniq, Yemen
 
-Below is a sample client that takes the name of an input file and an integer k as command-line arguments. It reads the data from the file; then it repeatedly reads autocomplete queries from standard input, and prints out the top k matching terms in descending order of weight.
+Below is a sample client that takes the name of an input file and an integer `k` as command-line arguments. It reads the data from the file; then it repeatedly reads autocomplete queries from standard input, and prints out the top `k` matching terms in descending order of weight.
 
-    public static void main(String[] args) {
+```java
+public static void main(String[] args) {
 
-        // read in the terms from a file
-        String filename = args[0];
-        In in = new In(filename);
-        int N = in.readInt();
-        Term[] terms = new Term[N];
-        for (int i = 0; i < N; i++) {
-            double weight = in.readDouble();       // read the next weight
-            in.readChar();                         // scan past the tab
-            String query = in.readLine();          // read the next query
-            terms[i] = new Term(query, weight);    // construct the term
-        }
-
-        // read in queries from standard input and print out the top k matching terms
-        int k = Integer.parseInt(args[1]);
-        Autocomplete autocomplete = new Autocomplete(terms);
-        while (StdIn.hasNextLine()) {
-            String prefix = StdIn.readLine();
-            Term[] results = autocomplete.allMatches(prefix);
-            for (int i = 0; i < Math.min(k, results.length); i++)
-                StdOut.println(results[i]);
-        }
+    // read in the terms from a file
+    String filename = args[0];
+    In in = new In(filename);
+    int N = in.readInt();
+    Term[] terms = new Term[N];
+    for (int i = 0; i < N; i++) {
+        double weight = in.readDouble();       // read the next weight
+        in.readChar();                         // scan past the tab
+        String query = in.readLine();          // read the next query
+        terms[i] = new Term(query, weight);    // construct the term
     }
+
+    // read in queries from standard input and print out the top k matching terms
+    int k = Integer.parseInt(args[1]);
+    Autocomplete autocomplete = new Autocomplete(terms);
+    while (StdIn.hasNextLine()) {
+        String prefix = StdIn.readLine();
+        Term[] results = autocomplete.allMatches(prefix);
+        for (int i = 0; i < Math.min(k, results.length); i++)
+            StdOut.println(results[i]);
+    }
+}
+```
 
 Here are a few sample executions:
 
@@ -183,7 +185,7 @@ Here are a few sample executions:
            99357.0  Al Maţarīyah, Egypt
 
 ### Interactive GUI (optional, but fun and no extra work)
-Download and compile [ftp://ftp.cs.princeton.edu/pub/cs226/autocomplete/AutocompleteGUI.java](AutocompleteGUI.java). The program takes the name of a file and an integer k as command-line arguments and provides a GUI for the user to enter queries. It presents the top k matching terms in real time. When the user selects a term, the GUI opens up the results from a Google search for that term in a browser.
+Download and compile [AutocompleteGUI.java](ftp://ftp.cs.princeton.edu/pub/cs226/autocomplete/AutocompleteGUI.java). The program takes the name of a file and an integer `k` as command-line arguments and provides a GUI for the user to enter queries. It presents the top `k` matching terms in real time. When the user selects a term, the GUI opens up the results from a Google search for that term in a browser.
 
     % java AutocompleteGUI cities.txt 10
 
@@ -191,25 +193,25 @@ Download and compile [ftp://ftp.cs.princeton.edu/pub/cs226/autocomplete/Autocomp
 ### Extra credit 1
 This is an opportunity to earn extra credit and contribute to future offerings of this assignment. Create a real-world data (preferably large or huge) for which autocomplete would be appropriate and document it in your readme file (including a reference to the original data source). Below are a few possibilities. Note that some of the datasets are massive and you will need to filter them down to appropriate sizes and put them into our file format.
 
-   - [http://dumps.wikimedia.org/other/pagecounts-raw/](Wikipedia): term = Wikipedia page, weight = number of hits per year.
+   - [Wikipedia](http://dumps.wikimedia.org/other/pagecounts-raw/): term = Wikipedia page, weight = number of hits per year.
 
-   - [http://storage.googleapis.com/books/ngrams/books/datasetsv2.html](Google books Ngram Viewer): term = n-gram, weight = frequency of occurrence in corpus of books.
+   - [Google books Ngram Viewer](http://storage.googleapis.com/books/ngrams/books/datasetsv2.html): term = n-gram, weight = frequency of occurrence in corpus of books.
 
-   - [http://en.wiktionary.org/wiki/Wiktionary%3AFrequency_lists](Wiktionary): term = word, weight = frequency of occurrence in corpus. Pick a language with a non-Latin alphabet such as Hebrew, Arabic, Russian, Greek, or Japanese.
+   - [Wiktionary](http://en.wiktionary.org/wiki/Wiktionary%3AFrequency_lists): term = word, weight = frequency of occurrence in corpus. Pick a language with a non-Latin alphabet such as Hebrew, Arabic, Russian, Greek, or Japanese.
 
-   - [http://www.imdb.com/interfaces](The Internet Movie Database): term = movie, weight = number of reviews or average rating. 
+   - [The Internet Movie Database](http://www.imdb.com/interfaces): term = movie, weight = number of reviews or average rating. 
 
 Be sure that your file is in the prescribed format (tab-separated and UTF-8 encoded). If your file is less than 50MB, submit it as usual; if it is larger, please contact your preceptor for submission instructions.
 
 ### Extra credit 2
-Improve [ftp://ftp.cs.princeton.edu/pub/cs226/autocomplete/AutocompleteGUI.java](AutocompleteGUI.java) in the following (or other) ways:
+Improve [AutocompleteGUI.java](ftp://ftp.cs.princeton.edu/pub/cs226/autocomplete/AutocompleteGUI.java) in the following (or other) ways:
 
    - Improve the graphical layout (e.g., align search bar and suggestion box, allow search bar and suggestion box to expand to width of window).
 
    - Fix some of the known bugs, which are documented in the file. 
 
 ### Deliverables
-Submit `Autocomplete.java`, `BinarySearchDeluxe.java`, and `Term.java`. Your may not call any library functions other than those in `java.lang`, `java.util`, `stdlib.jar`, and `algs4.jar`. Finally, submit a [./readme.txt](readme.txt) file and answer the questions.
+Submit `Autocomplete.java`, `BinarySearchDeluxe.java`, and `Term.java`. Your may not call any library functions other than those in `java.lang`, `java.util`, `stdlib.jar`, and `algs4.jar`. Finally, submit a [readme.txt](./readme.txt) file and answer the questions.
 
 This assignment was developed by Matthew Drabick and Kevin Wayne.
 `Copyright © 2014.`
