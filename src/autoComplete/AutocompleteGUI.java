@@ -36,7 +36,7 @@
  *
  ******************************************************************************/
 
-package Autocomplete;
+package autoComplete;
 
 import edu.princeton.cs.algs4.In;
 
@@ -663,10 +663,6 @@ public class AutocompleteGUI extends JFrame {
         final String filename = args[0];
         final int k = Integer.parseInt(args[1]);
         SwingUtilities.invokeLater(
-                new Runnable() {
-                    public void run() {
-                        new AutocompleteGUI(filename, k).setVisible(true);
-                    }
-                });
+                () -> new AutocompleteGUI(filename, k).setVisible(true));
     }
 }

@@ -1,4 +1,4 @@
-package Autocomplete;
+package autoComplete;
 
 import java.util.Comparator;
 
