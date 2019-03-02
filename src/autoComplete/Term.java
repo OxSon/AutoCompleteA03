@@ -28,15 +28,6 @@ public class Term implements Comparable<Term> {
         this.weight = weight;
     }
 
-    //fIXME delete these; both break API but smooth testing process
-    public double weight() {
-        return weight;
-    }
-
-    public String query() {
-        return query;
-    }
-
     /**
      * Compare the Terms in descending order by weight.
      *
@@ -60,8 +51,7 @@ public class Term implements Comparable<Term> {
             String[] queries = {thisT.query, thatT.query};
 
             //if our query is longer than the specified prefix length,
-            //trim it down to length r
-            //otherwise, keep as is
+            // trim it down to length r otherwise, keep as is
             for (int i = 0; i < queries.length; i++) {
                 if (queries[i].length() > r)
                     queries[i] = queries[i].substring(0, r);

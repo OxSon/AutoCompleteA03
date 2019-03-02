@@ -27,9 +27,8 @@ public class Autocomplete {
             throw new NullPointerException("Argument cannot be null");
 
         this.terms = terms;
-        //TODO what kind of sort to use
+
         Quick.sort(this.terms);
-//        Heap.sort(terms);
     }
 
 
