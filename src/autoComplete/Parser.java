@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.function.IntFunction;
 
 class Parser {
     private static Term[] terms = new Term[0]; //have something to return even if parse fails
@@ -16,7 +15,7 @@ class Parser {
         try (BufferedReader rdr = new BufferedReader(new FileReader(path))) {
             //discard first line, we don't need it;
             rdr.readLine();
-            terms = rdr.lines().map(Parser::parseLine).toArray((IntFunction<Term[]>) Term[]::new);
+            terms = rdr.lines().map(Parser::parseLine).toArray(Term[]::new);
 
             return terms;
         } catch (FileNotFoundException e) {

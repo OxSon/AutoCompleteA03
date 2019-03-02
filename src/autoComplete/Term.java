@@ -57,9 +57,7 @@ public class Term implements Comparable<Term> {
             throw new IllegalArgumentException("Argument r cannot be negative");
 
         return (thisT, thatT) -> {
-            String thisQuery = thisT.query;
-            String thatQuery = thatT.query;
-            String[] queries = {thisQuery, thatQuery};
+            String[] queries = {thisT.query, thatT.query};
 
             //if our query is longer than the specified prefix length,
             //trim it down to length r
