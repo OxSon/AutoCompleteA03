@@ -3,6 +3,7 @@ package Autocomplete;
 import edu.princeton.cs.algs4.StdRandom;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -70,6 +71,7 @@ class TermTest {
             var goal = String.format("%.2f\t%s", Double.parseDouble(lines[i][0]), lines[i][1]);
             assertEquals(goal, terms[i].toString());
         }
+        
     }
 
     @Test
