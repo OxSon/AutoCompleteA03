@@ -211,7 +211,7 @@ Improve [AutocompleteGUI.java](ftp://ftp.cs.princeton.edu/pub/cs226/autocomplete
    - Fix some of the known bugs, which are documented in the file. 
 
 ### Deliverables
-Submit `Autocomplete.java`, `BinarySearchDeluxe.java`, and `Term.java`. Your may not call any library functions other than those in `java.lang`, `java.util`, `stdlib.jar`, and `algs4.jar`. Finally, submit a [readme.txt](./readme.txt) file and answer the questions.
+Submit `Autocomplete.java`, `BinarySearchDeluxe.java`, and `Term.java`. You may not call any library functions other than those in `java.lang`, `java.util`, `stdlib.jar`, and `algs4.jar`. Finally, submit a [readme.txt](./readme.txt) file and answer the questions.
 
 This assignment was developed by Matthew Drabick and Kevin Wayne.
 `Copyright © 2014.`
