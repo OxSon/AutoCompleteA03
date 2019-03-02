@@ -43,10 +43,10 @@ public class Autocomplete {
             throw new NullPointerException("Argument cannot be null");
 
         Term key = new Term(prefix, 0);
-        int firstIndex = index(key, true);
+        int firstIndex = index(key, prefix.length(), true);
         //If our first search failed, no point in continuing, just return a zero-length Term[]
         if (firstIndex > 0) {
-            int lastIndex = index(key, false);
+            int lastIndex = index(key, prefix.length(), false);
 
             Term[] matches = Arrays.copyOfRange(terms, firstIndex, lastIndex + 1);
             Arrays.sort(matches, Term.byReverseWeightOrder());
@@ -69,7 +69,7 @@ public class Autocomplete {
 
         Term key = new Term(prefix, 0);
 
-        return nonNegativeNumber(index(key, false) - index(key, true));
+        return nonNegativeNumber(index(key, prefix.length(), false) - index(key, prefix.length(), true));
     }
 
     //rounds all negative values up to zero
@@ -78,8 +78,7 @@ public class Autocomplete {
     }
 
     //Helper method to easily call either of the BinarySearch (index first or index last) methods
-    private int index(Term key, boolean first) {
-        int length = key.query().length();
+    private int index(Term key, int length, boolean first) {
         return first ?
                 BinarySearchDeluxe.firstIndexOf(terms, key, Term.byPrefixOrder(length)) :
                 BinarySearchDeluxe.lastIndexOf(terms, key, Term.byPrefixOrder(length));
